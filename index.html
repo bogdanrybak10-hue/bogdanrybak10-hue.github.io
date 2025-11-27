@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Технологии 3D-печать в Иркутске</title>
+  <style>
+    /* Твои существующие стили */
+    ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
+}
+    .fancy-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 60px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .header-content {
+      background: rgba(255,255,255,0.97);
+      border-radius: 28px;
+      box-shadow: 0 8px 32px rgba(76,70,142,0.15);
+      padding: 36px 60px;
+      text-align: center;
+      max-width: 800px;
+      width: 100%;
+    }
+    body.dark-mode .header-content {
+      background: rgba(30,24,50,0.94);
+      color: #eaf3ff;
+    }
+    .main-title {
+      font-size: 2.5rem;
+      margin-bottom: 0.8rem;
+      text-align: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+      font-weight: bold;
+      text-shadow: 2px 2px 8px rgba(55,40,110,0.15);
+    }
+    .subtitle {
+  font-size: 1.2rem;
+  opacity: 1;
+  margin-bottom: 0;
+  font-weight: 500;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+    :root {
+      --text-color: #333;
+      --bg-color: #f8f9fa;
+      --container-bg: rgba(255, 255, 255, 0.95);
+      --card-bg: white;
+      --header-bg: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      --nav-bg: #fff;
+      --link-color: #333;
+      --accent: #667eea;
+    }
+    body.dark-mode {
+      --text-color: #f0f0f0;
+      --bg-color: #121212;
+      --container-bg: rgba(20, 20, 20, 0.95);
+      --card-bg: #1e1e1e;
+      --header-bg: linear-gradient(135deg, #4e54c8 0%, #8f94fb 100%);
+      --nav-bg: #1c1c1c;
+      --link-color: #ddd;
+      --accent: #8f94fb;
+    }
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--bg-color);
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background-color: var(--container-bg);
+    }
+    header {
+      background: var(--header-bg);
+      color: white;
+      text-align: center;
+      padding: 3rem 0;
+    }
+    .main-title {
+      color: #ff6633;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    .subtitle {
+      color: #009688;
+      font-size: 1.2rem;
+      opacity: 1;
+    }
+    nav {
+      background-color: var(--nav-bg);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      list-style: none;
+      padding: 1rem 0;
+    }
+    .nav-menu li { margin: 0 1rem; }
+    .nav-menu a {
+      color: var(--link-color);
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    .nav-menu a:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+    section { padding: 3rem 0; }
+    .section-title {
+      font-size: 2rem;
+      color: var(--text-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+    .content-block,
+    .direction-card,
+    figure {
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .direction-card:hover,
+    figure:hover { transform: translateY(-5px); }
+    .direction-card h3 { color: var(--accent); margin-bottom: 1rem; }
+    .directions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    figure img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+      border-radius: 10px 10px 0 0;
+    }
+    figcaption {
+      padding: 1rem;
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      border-radius: 0 0 10px 10px;
+      background-color: #f0f0f0;
+    }
+    /* Новый стиль для блока компаний */
+    .irkutsk-block {
+      background: var(--card-bg);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      padding: 40px;
+      text-align: center;
+      max-width: 800px;
+      margin: 40px auto 0;
+      border: 2px solid var(--accent);
+    }
+    body.dark-mode .irkutsk-block {
+      border-color: var(--accent);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .irkutsk-block p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+    footer {
+      background-color: #222;
+      color: #fff;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .toggle-btn {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      z-index: 110;
+    }
+    .toggle-btn:hover { background: #555; }
+    @media (max-width: 768px) {
+      .nav-menu { flex-direction: column; align-items: center; }
+      .nav-menu li { margin: 0.25rem 0; }
+      h1 { font-size: 2rem; }
+      .main-title { font-size: 2rem; }
+      .section-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleDarkMode()">Тема</button>
+  <header class="fancy-header">
+    <div class="header-content">
+      <h1 class="main-title">Технологии 3D печати в Иркутске</h1>
+      <p class="subtitle">Современные решения для моделирования и производства</p>
+    </div>
+  </header>
+  <nav>
+    <div class="container">
+      <ul class="nav-menu">
+        <li><a href="#about">Что такое 3D-печать</a></li>
+        <li><a href="#methods">Методы 3D-печати</a></li>
+        <li><a href="#directions">Типы пластика</a></li>
+        <li><a href="#gallery">Примеры</a></li>
+      </ul>
+    </div>
+  </nav>
+  <main class="container">
+    <section id="about">
+      <h2 class="section-title">Что такое 3D-печать</h2>
+      <div class="content-block" style="padding:20px; font-size:1.1rem; line-height:1.5;">
+        <p>3D-печать — это инновационная технология послойного создания физических объектов по цифровой трехмерной модели. Этот процесс позволяет изготавливать сложные изделия и детали различного назначения, начиная от прототипов и заканчивая конечными продуктами, с высокой точностью и экономией материалов.</p>
+        <p>Главная идея 3D-печати — послойное нанесение материала. Для этого сначала создается цифровая 3D-модель объекта с помощью специализированного программного обеспечения. Затем модель разбивается на тонкие слои, которые принтер формирует один за другим, плавно накладывая материал до получения готового изделия.</p>
+      </div>
+    </section>
+    <section id="methods">
+      <h2 class="section-title">Методы 3D-печати</h2>
+      <div class="content-block" style="padding:20px; font-size:1.1rem; line-height:1.5;">
+        <p>Существует несколько основных технологий 3D-печати, каждая из которых подходит для разных задач:</p>
+        <ul>
+          <li><strong>FDM (Fused Deposition Modeling):</strong> Метод послойного наплавления пластика. Идеален для бытовых и учебных целей, позволяет использовать большое количество разнообразных филаментов.</li>
+          <li><strong>SLA (Stereolithography):</strong> Печать с применением фотополимерной смолы и лазера. Позволяет получать изделия с высокой детализацией и гладкой поверхностью, широко используется для ювелирных прототипов, макетирования, медицины.</li>
+          <li><strong>SLS (Selective Laser Sintering):</strong> Печать через спекание порошков лазером. Преимущества — высокая прочность деталей и разнообразие материалов.</li>
+          <li><strong>DLP (Digital Light Processing):</strong> Аналог SLA, но используется проектор, технология отличается высокой скоростью отклика и более низкой стоимостью оборудования.</li>
+          <li><strong>FFF (Fused Filament Fabrication):</strong> Практически то же, что FDM, но термин часто применяют к промышленным моделям принтеров.</li>
+        </ul>
+        <p>Каждая технология отличается не только принципом работы, но и особенностями — например, качеством поверхности, прочностью, доступностью материалов и стоимостью расходников.</p>
+      </div>
+    </section>
+    <section id="directions">
+      <h2 class="section-title">Типы пластика для 3D-печати</h2>
+      <div class="directions-grid">
+        <div class="direction-card" style="padding:20px;">
+          <h3>PLA</h3>
+          <p>Биоразлагаемый материал, простой в использовании, с низкой усадкой и приятным запахом. Подходит для большинства бытовых и творческих проектов.</p>
+        </div>
+        <div class="direction-card" style="padding:20px;">
+          <h3>ABS</h3>
+          <p>Прочный и термостойкий пластик для функциональных деталей и прототипов, требует хорошей вентиляции при печати.</p>
+        </div>
+        <div class="direction-card" style="padding:20px;">
+          <h3>PETG</h3>
+          <p>Комбинация прочности ABS и простоты PLA, устойчив к влаге и химикатам, подходит для функциональных изделий.</p>
+        </div>
+        <div class="direction-card" style="padding:20px;">
+          <h3>TPU</h3>
+          <p>Гибкий и эластичный материал для печати резиноподобных деталей и изделий.</p>
+        </div>
+        <div class="direction-card" style="padding:20px;">
+          <h3>Нейлон (Nylon)</h3>
+          <p>Прочный, износостойкий и слегка гибкий материал для инженерных решений и механических деталей.</p>
+        </div>
+        <div class="direction-card" style="padding:20px;">
+          <h3>Поликарбонат (Polycarbonate)</h3>
+          <p>Очень прочный и термостойкий пластик для изделий с высокими требованиями к прочности.</p>
+        </div>
+      </div>
+    </section>
+    <section id="gallery">
+  <h2 class="section-title">Примеры 3D-печатных изделий</h2>
+
+  <figure>
+    <img src="tenor.gif" alt="Процесс 3D-печати FDM" style="width:100%; max-width:500px; border-radius:16px; display:block; margin:auto;">
+    <figcaption>Процесс 3D-печати FDM</figcaption>
+  </figure>
+
+  <figure>
+    <img src="11.gif" alt="Второй пример 3D-печати" style="width:100%; max-width:500px; border-radius:16px; display:block; margin:40px auto 0;">
+    <figcaption>Второй пример 3D-печатного изделия</figcaption>
+  </figure>
+</section>
+    <!-- Новый блок компаний -->
+    <section style="background: rgba(255,255,255,0.97); border-radius: 28px; box-shadow: 0 8px 32px rgba(76,70,142,0.15); padding: 40px; text-align: center; max-width: 800px; margin: 40px auto 0; position: relative; border: 2px solid transparent;">
+  <div style="position: absolute; top: -2px; left: -2px; right: -2px; bottom: -2px; border-radius: 30px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); z-index: -1;"></div>
+  <h2 style="margin-bottom: 20px; color: #333;">3D-печать в Иркутске</h2>
+  <p style="font-size: 1.2rem; line-height: 1.7; margin-bottom: 1rem; color: #333;">В Иркутске есть много компаний, занимающихся 3D-печатью. Одни из них: <strong>«3D NOVA»</strong>, <strong>«3D ВИНР»</strong>, <strong>Volprint</strong> и <strong>3Dquality</strong>.</p>
+  <p style="font-size: 1.2rem; line-height: 1.7; color: #333;">Они делают импланты, моделирование, заказ определённых автодеталей, прототипы инженерных устройств, макеты зданий, медицинские модели для операций, корпуса электроники, ювелирные изделия, сувениры и диорамы.</p>
+</section>
+  </main>
+  <footer>
+    <p>&copy; 2025 3D-печать и технологии в Иркутске. Все права защищены.</p>
+    <p>Создано для образовательных целей</p>
+  </footer>
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+  </script>
+</body>
+</html>
